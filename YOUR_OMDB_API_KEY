@@ -1,0 +1,36 @@
+const apiKey = 'YOUR_OMDB_API_KEY';
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const movieList = document.getElementById('movieList');
+
+searchButton.addEventListener('click', () => {
+  const searchTerm = searchInput.value.trim();
+  if (searchTerm !== '') {
+    fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}`)
+      .then(response => response.json())
+      .then(data => {
+        // Clear previous search results
+        movieList.innerHTML = '';
+        
+        // Check if the response contains search results
+        if (data.Response === 'True') {
+          // Loop through each movie in the search results
+          data.Search.forEach(movie => {
+            // Create a list item for each movie and display its title
+            const listItem = document.createElement('li');
+            listItem.textContent = movie.Title;
+            movieList.appendChild(listItem);
+          });
+        } else {
+          // Display an error message if no results found
+          const errorMessage = document.createElement('li');
+          errorMessage.textContent = 'No movies found';
+          movieList.appendChild(errorMessage);
+        }
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error fetching data:', error);
+      });
+  }
+});

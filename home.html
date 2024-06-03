@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="home-container">
+    <h2>Welcome to Movie Library</h2>
+    <p>Here you can find and manage your favorite movies.</p>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search for movies...">
+      <a href="add_movie.html" class="add-movie-link">Add New Movie</a> <!-- Link to the "add_movie.html" page -->
+    </div>
+
+    <h3>Movie Library</h3>
+    <ul id="movieList">
+      <!-- Movie items will be dynamically added here -->
+    </ul>
+
+    <a href="#" id="logout">Logout</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
